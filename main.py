@@ -8,12 +8,12 @@ from keras.preprocessing import sequence
 # fix random seed for reproducibility
 
 if __name__ == '__main__':
-    max_review_length = 100
+    title_length = 100
     embedding_length = 32
     num_titles = 5000
 
     model = Sequential()
-    model.add(Embedding(num_titles, embedding_length, input_length=max_review_length))
+    model.add(Embedding(num_titles, embedding_length, input_length=title_length))
     model.add(LSTM(100))
     model.add(Dense(10))
     model.compile(loss='crossentropy', optimizer='adam', metrics=['accuracy'])
