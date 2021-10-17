@@ -1,6 +1,5 @@
 import pandas as pd
 from inference_kmeans import *
-import matplotlib.pyplot as plt
 import ast
 
 
