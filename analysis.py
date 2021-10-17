@@ -10,7 +10,7 @@ def filter_by_yr(file_name, yr):
         pub_yr = pub_dates[i][0:4]
         if pub_yr == yr:
             row = df.iloc[i]
-            df_res.append(row)
+            df_res = df_res.append(row)
 
     return df_res
 
