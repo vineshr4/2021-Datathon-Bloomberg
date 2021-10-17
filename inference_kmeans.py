@@ -1,5 +1,6 @@
 from topic_prediction import *
 from sklearn.cluster import KMeans
+from sklearn.cluster import DBSCAN
 from sklearn.metrics import davies_bouldin_score
 
 
@@ -16,6 +17,11 @@ def k_means(train_data, k):
     km = KMeans(n_clusters=k, random_state=0).fit(train_data)
 
     return km.labels_
+
+
+def db_scan(train_data, eps, min_samples):
+    clustering = DBSCAN(eps=eps, min_samples=min_samples).fit(train_data)
+    return clustering.labels_
 
 
 if __name__ == '__main__':

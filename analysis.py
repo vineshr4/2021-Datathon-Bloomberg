@@ -56,7 +56,8 @@ if __name__ == '__main__':
     data = pd.read_csv("fed_doc_data_abs.csv")
     # x_values = np.array(encode_feats(data, 25, "abstract"))
     x_values = np.load("x_values.npy")
-    cluster = k_means(inference("topic_model_abstract.h5", x_values), 3)
+    cluster = k_means(inference("topic_model_abstract.h5", x_values), 10)
+    # cluster = db_scan(inference("topic_model_abstract.h5", x_values), 3, 2)
     topic_clusters = topics_by_clustering(data, cluster)
     m_topics, m_frequencies = topic_frequency(topic_clusters)
 
