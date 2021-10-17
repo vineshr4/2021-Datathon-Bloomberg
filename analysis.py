@@ -67,17 +67,37 @@ if __name__ == '__main__':
     #     print(m_frequencies[i])
 
     # # FILTERING STUFF
-    year_2001_6 = ['2001','2002','2003','2004','2005','2006']
+    year_2001_6 = ['2001', '2002', '2003', '2004', '2005', '2006']
     overall_df = pd.DataFrame()
     for year in year_2001_6:
         df = filter_by_year('fed_doc_data_abs.csv', year)
         overall_df = overall_df.append(df)
 
     x_values = np.array(encode_feats(overall_df, 25, "abstract"))
-    cluster = k_means(inference("topic_model_abstract.h5", x_values), 10)
+    cluster = k_means(inference("topic_model_abstract.h5", x_values), 5)
     topic_clusters = topics_by_clustering(overall_df, cluster)
     m_topics, m_frequencies = topic_frequency(topic_clusters)
 
     for i in range(0, len(m_topics)):
         print(m_topics[i])
         print(m_frequencies[i])
+
+    print("------------------------------------------------------")
+    print("------------------------------------------------------")
+
+    # Number 2
+    year_2007_12 = ['2007', '2008', '2009', '2010', '2011', '2012']
+    overall_df = pd.DataFrame()
+    for year in year_2007_12:
+        df = filter_by_year('fed_doc_data_abs.csv', year)
+        overall_df = overall_df.append(df)
+
+    x_values = np.array(encode_feats(overall_df, 25, "abstract"))
+    cluster = k_means(inference("topic_model_abstract.h5", x_values), 5)
+    topic_clusters = topics_by_clustering(overall_df, cluster)
+    m_topics, m_frequencies = topic_frequency(topic_clusters)
+
+    for i in range(0, len(m_topics)):
+        print(m_topics[i])
+        print(m_frequencies[i])
+
