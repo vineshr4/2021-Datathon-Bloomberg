@@ -19,6 +19,12 @@ def k_means(train_data, k):
 
     return km.labels_
 
+def get_clustering():
+    data = pd.read_csv("fed_doc_data_abs.csv")
+    x_values = np.array(encode_feats(data, 25, "abstract"))
+    clustering = k_means(inference("topic_model_abstract.h5", x_values), 3)
+    return clustering
+
 
 def get_cluster_dict(df, clusters, num_clusters):
     # create cluster dict
