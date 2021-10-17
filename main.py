@@ -5,6 +5,7 @@ from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
+
 # fix random seed for reproducibility
 
 if __name__ == '__main__':
@@ -15,7 +16,8 @@ if __name__ == '__main__':
     model = Sequential()
     model.add(Embedding(num_titles, embedding_length, input_length=title_length))
     model.add(LSTM(100))
-    model.add(Dense(10))
+    model.add(Dense(50))
+    model.add(Dense(10))  # output layer
     model.compile(loss='crossentropy', optimizer='adam', metrics=['accuracy'])
     print(model.summary())
     # model.fit(X_train, y_train, epochs=3, batch_size=64)
